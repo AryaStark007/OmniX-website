@@ -1,963 +1,1034 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>OmniX — Enter the Universe</title>
-
-<meta name="description"
-content="OmniX — an original game universe and ONX community ecosystem. Explore, earn, build and prepare for the planned 2027 game launch.">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>OmniX — The Power to Become Anything</title>
+<meta name="description" content="OmniX game universe and ONX community project">
 
 <style>
+:root{
+  --bg:#050609;
+  --panel:#0d1017;
+  --line:#242936;
+  --lime:#b7ff00;
+  --muted:#aab0bd;
+}
 
 *{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
+  box-sizing:border-box;
+  margin:0;
+  padding:0
 }
 
 html{
-    scroll-behavior:smooth;
+  scroll-behavior:smooth
 }
 
 body{
-    background:#050607;
-    color:#fff;
-    font-family:Arial,Helvetica,sans-serif;
-    overflow-x:hidden;
+  font-family:Arial,Helvetica,sans-serif;
+  color:#fff;
+  background:
+    radial-gradient(circle at 20% 10%,#172006,transparent 28%),
+    radial-gradient(circle at 85% 35%,#17102b,transparent 30%),
+    var(--bg);
+  overflow-x:hidden
 }
 
-/* BACKGROUND */
-
-body:before{
-    content:"";
-    position:fixed;
-    inset:0;
-    background:
-      radial-gradient(circle at 20% 20%,rgba(150,255,0,.10),transparent 30%),
-      radial-gradient(circle at 80% 40%,rgba(0,255,190,.08),transparent 30%),
-      radial-gradient(circle at 50% 90%,rgba(130,0,255,.08),transparent 35%);
-    pointer-events:none;
-    z-index:-2;
+a{
+  text-decoration:none;
+  color:inherit
 }
 
-/* NAVIGATION */
+/* =========================
+   HEADER
+========================= */
+
+header{
+  position:fixed;
+  z-index:20;
+  top:0;
+  width:100%;
+  background:#050609cc;
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--line)
+}
 
 nav{
-    position:fixed;
-    top:0;
-    left:0;
-    right:0;
-    height:72px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:0 6%;
-    background:rgba(5,6,7,.75);
-    backdrop-filter:blur(18px);
-    border-bottom:1px solid rgba(255,255,255,.08);
-    z-index:1000;
+  max-width:1200px;
+  margin:auto;
+  min-height:72px;
+  padding:0 22px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between
 }
 
 .logo{
-    font-size:25px;
-    font-weight:900;
-    letter-spacing:4px;
+  font-size:26px;
+  font-weight:900;
+  letter-spacing:5px
 }
 
 .logo span{
-    color:#b7ff00;
-    text-shadow:0 0 20px #b7ff00;
+  color:var(--lime);
+  text-shadow:0 0 20px #b7ff00
 }
 
-nav ul{
-    display:flex;
-    gap:30px;
-    list-style:none;
+.links{
+  display:flex;
+  gap:6px
 }
 
-nav a{
-    color:#ddd;
-    text-decoration:none;
-    font-size:14px;
-    font-weight:bold;
-    transition:.3s;
+.links a{
+  padding:10px 14px;
+  border-radius:9px;
+  font-size:13px;
+  font-weight:800;
+  letter-spacing:1px;
+  color:#ddd;
+  transition:.25s
 }
 
-nav a:hover{
-    color:#b7ff00;
+.links a:hover{
+  color:var(--lime);
+  background:#b7ff0012
 }
 
-/* HERO */
+.menu{
+  display:none;
+  background:#ffffff0b;
+  border:1px solid var(--line);
+  color:#fff;
+  border-radius:8px;
+  padding:9px 12px;
+  cursor:pointer
+}
+
+/* =========================
+   MAIN
+========================= */
+
+main{
+  padding-top:72px
+}
+
+section{
+  max-width:1200px;
+  margin:auto;
+  padding:100px 22px
+}
+
+/* =========================
+   HERO
+========================= */
 
 .hero{
-    min-height:100vh;
-    padding:140px 7% 80px;
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    align-items:center;
-    gap:40px;
-    position:relative;
+  min-height:calc(100vh - 72px);
+  display:grid;
+  place-items:center;
+  text-align:center;
+  position:relative
 }
 
-.hero-text{
-    animation:fadeUp 1s ease;
+.hero:before{
+  content:"";
+  position:absolute;
+  width:600px;
+  height:600px;
+  border-radius:50%;
+  background:#b7ff0010;
+  filter:blur(70px);
+  animation:pulse 5s infinite
 }
 
+.hero>*{
+  position:relative
+}
+
+.eyebrow,
 .kicker{
-    color:#b7ff00;
-    letter-spacing:5px;
-    font-size:13px;
-    font-weight:bold;
-    margin-bottom:20px;
+  color:var(--lime);
+  font-weight:900;
+  letter-spacing:4px;
+  font-size:12px;
+  text-transform:uppercase
+}
+
+.eyebrow{
+  margin-bottom:22px
+}
+
+.eyebrow:before{
+  content:"";
+  display:inline-block;
+  width:8px;
+  height:8px;
+  background:var(--lime);
+  border-radius:50%;
+  margin-right:9px;
+  box-shadow:0 0 18px #b7ff00
 }
 
 h1{
-    font-size:clamp(50px,7vw,100px);
-    line-height:.9;
-    letter-spacing:-5px;
-    margin-bottom:30px;
+  font-size:clamp(48px,8vw,100px);
+  line-height:.92;
+  letter-spacing:-4px
 }
 
 h1 span{
-    color:#b7ff00;
-    text-shadow:
-       0 0 15px rgba(183,255,0,.7),
-       0 0 50px rgba(183,255,0,.25);
+  color:var(--lime);
+  text-shadow:0 0 35px #b7ff0050
 }
 
 .hero p{
-    max-width:600px;
-    color:#aaa;
-    font-size:18px;
-    line-height:1.7;
-    margin-bottom:35px;
+  max-width:760px;
+  margin:28px auto;
+  color:var(--muted);
+  font-size:18px;
+  line-height:1.7
 }
 
-.buttons{
-    display:flex;
-    gap:15px;
-    flex-wrap:wrap;
+/* =========================
+   BUTTONS
+========================= */
+
+.actions{
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-top:25px
 }
 
 .btn{
-    padding:16px 25px;
-    border-radius:8px;
-    text-decoration:none;
-    font-weight:bold;
-    display:inline-block;
-    transition:.3s;
+  display:inline-block;
+  padding:15px 23px;
+  border-radius:10px;
+  font-weight:900;
+  border:1px solid var(--line);
+  transition:.25s
 }
 
-.btn-primary{
-    background:#b7ff00;
-    color:#050607;
-    box-shadow:0 0 30px rgba(183,255,0,.25);
+.primary{
+  background:var(--lime);
+  color:#071000;
+  box-shadow:0 0 28px #b7ff0030
 }
 
-.btn-primary:hover{
-    transform:translateY(-3px);
-    box-shadow:0 0 45px rgba(183,255,0,.55);
+.primary:hover{
+  transform:translateY(-3px);
+  box-shadow:0 0 45px #b7ff0060
 }
 
-.btn-outline{
-    border:1px solid #555;
-    color:#fff;
+.secondary{
+  background:#ffffff09
 }
 
-.btn-outline:hover{
-    border-color:#b7ff00;
-    color:#b7ff00;
+.secondary:hover{
+  border-color:var(--lime);
+  color:var(--lime);
+  transform:translateY(-3px)
 }
 
-.hero-art{
-    position:relative;
-    display:flex;
-    justify-content:center;
-    align-items:center;
+/* =========================
+   PORTAL
+========================= */
+
+.portal{
+  width:min(720px,90vw);
+  height:150px;
+  margin:70px auto 0;
+  border:1px solid #b7ff0055;
+  border-radius:50%;
+  transform:perspective(400px) rotateX(55deg);
+  box-shadow:
+    0 0 45px #b7ff0020,
+    inset 0 0 40px #8b5cff20;
+  animation:pulse 4s infinite
 }
 
-.hero-art img{
-    width:min(650px,100%);
-    max-height:600px;
-    object-fit:contain;
-    filter:
-      drop-shadow(0 0 25px rgba(183,255,0,.25))
-      drop-shadow(0 0 80px rgba(0,255,180,.12));
-    animation:float 5s ease-in-out infinite;
+.portal:before{
+  content:"";
+  display:block;
+  position:absolute;
+  inset:20px;
+  border:1px solid #35e7ff55;
+  border-radius:50%
 }
 
-/* GLOW */
+/* =========================
+   SECTION HEADINGS
+========================= */
 
-.glow{
-    position:absolute;
-    width:300px;
-    height:300px;
-    border-radius:50%;
-    background:#b7ff00;
-    filter:blur(130px);
-    opacity:.12;
-    z-index:-1;
+.section-head{
+  margin-bottom:38px
 }
 
-/* SECTIONS */
-
-section{
-    padding:110px 7%;
+.section-head h2{
+  font-size:clamp(35px,5vw,62px);
+  margin-top:12px;
+  line-height:1
 }
 
-.section-label{
-    color:#b7ff00;
-    font-size:12px;
-    letter-spacing:4px;
-    font-weight:bold;
-    margin-bottom:15px;
+.lead{
+  max-width:760px;
+  margin-top:16px;
+  color:var(--muted);
+  line-height:1.7
 }
 
-.section-title{
-    font-size:clamp(35px,5vw,65px);
-    margin-bottom:20px;
-}
+/* =========================
+   CARDS
+========================= */
 
-.section-description{
-    color:#999;
-    max-width:700px;
-    line-height:1.7;
-}
-
-/* GAME */
-
-.game-grid{
-    margin-top:55px;
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:20px;
+.cards{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px
 }
 
 .card{
-    background:linear-gradient(
-       145deg,
-       rgba(255,255,255,.07),
-       rgba(255,255,255,.025)
+  padding:28px;
+  min-height:250px;
+  border:1px solid var(--line);
+  border-radius:20px;
+  background:
+    linear-gradient(
+      145deg,
+      #ffffff0c,
+      #ffffff03
     );
-    border:1px solid rgba(255,255,255,.09);
-    border-radius:18px;
-    padding:35px;
-    transition:.4s;
+  box-shadow:0 20px 60px #0008;
+  transition:.3s;
+  position:relative;
+  overflow:hidden
 }
 
 .card:hover{
-    transform:translateY(-8px);
-    border-color:rgba(183,255,0,.45);
-    box-shadow:0 20px 60px rgba(0,0,0,.35);
+  transform:translateY(-8px);
+  border-color:#b7ff0070
 }
 
 .icon{
-    font-size:42px;
-    margin-bottom:20px;
+  width:55px;
+  height:55px;
+  display:grid;
+  place-items:center;
+  border-radius:15px;
+  background:#b7ff0012;
+  border:1px solid #b7ff0040;
+  font-size:27px;
+  margin-bottom:24px
 }
 
 .card h3{
-    font-size:22px;
-    margin-bottom:12px;
+  font-size:23px;
+  margin-bottom:12px
 }
 
 .card p{
-    color:#999;
-    line-height:1.6;
+  color:var(--muted);
+  line-height:1.7
 }
 
-/* UNIVERSE */
+/* =========================
+   UNIVERSE
+========================= */
 
 .universe{
-    background:
-      linear-gradient(
-        90deg,
-        rgba(183,255,0,.04),
-        transparent,
-        rgba(0,255,200,.04)
-      );
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+  gap:22px
 }
 
-.universe-box{
-    margin-top:50px;
-    border:1px solid rgba(255,255,255,.1);
-    border-radius:25px;
-    padding:50px;
-    background:rgba(255,255,255,.025);
+.visual{
+  min-height:410px;
+  border:1px solid var(--line);
+  border-radius:25px;
+  position:relative;
+  overflow:hidden;
+
+  background:
+    radial-gradient(
+      circle at 50% 45%,
+      #b7ff0040,
+      transparent 10%
+    ),
+    radial-gradient(
+      circle at 30% 70%,
+      #8b5cff40,
+      transparent 25%
+    ),
+    radial-gradient(
+      circle at 80% 20%,
+      #35e7ff30,
+      transparent 25%
+    ),
+    #080a11
 }
 
-.universe-box p{
-    color:#aaa;
-    font-size:18px;
-    line-height:1.9;
-    max-width:900px;
+.planet{
+  position:absolute;
+  width:190px;
+  height:190px;
+  left:50%;
+  top:48%;
+  transform:translate(-50%,-50%);
+  border-radius:50%;
+
+  background:
+    radial-gradient(
+      circle at 35% 28%,
+      #efffb8 0 5%,
+      transparent 6%
+    ),
+    linear-gradient(
+      135deg,
+      #d4ff52,
+      #202b18 70%
+    );
+
+  box-shadow:0 0 80px #b7ff0050;
+  animation:float 6s ease-in-out infinite
 }
 
-/* TOKEN */
-
-.token-grid{
-    margin-top:50px;
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:18px;
+.planet:after{
+  content:"";
+  position:absolute;
+  width:290px;
+  height:70px;
+  left:-50px;
+  top:60px;
+  border:2px solid #ffffff44;
+  border-radius:50%;
+  transform:rotate(-18deg)
 }
 
-.stat{
-    padding:30px;
-    border-radius:15px;
-    background:#0c0e0f;
-    border:1px solid #202426;
+.visual label{
+  position:absolute;
+  bottom:22px;
+  left:22px;
+  background:#0008;
+  border:1px solid var(--line);
+  padding:10px 13px;
+  border-radius:8px;
+  font-size:11px;
+  letter-spacing:2px
 }
 
-.stat strong{
-    display:block;
-    font-size:30px;
-    color:#b7ff00;
-    margin-bottom:10px;
+.info{
+  padding:30px;
+  border:1px solid var(--line);
+  border-radius:25px;
+  background:#ffffff06
 }
 
-.stat small{
-    color:#888;
+.info h3{
+  font-size:28px;
+  margin-bottom:15px
 }
 
-/* REWARDS */
-
-.rewards{
-    background:#07090a;
+.info p{
+  color:var(--muted);
+  line-height:1.75;
+  margin-bottom:20px
 }
 
-.reward-box{
-    margin-top:50px;
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:25px;
+.list{
+  display:grid;
+  gap:13px
 }
 
-.reward-card{
-    border:1px solid rgba(183,255,0,.15);
-    border-radius:20px;
-    padding:40px;
-    background:
-      radial-gradient(circle at top right,
-      rgba(183,255,0,.08),
-      transparent 40%),
-      #0b0d0e;
+.list div{
+  display:flex;
+  gap:10px
 }
 
-.reward-card h3{
-    font-size:27px;
-    margin-bottom:15px;
+.check{
+  color:var(--lime);
+  font-weight:900
 }
 
-.reward-card p{
-    color:#999;
-    line-height:1.7;
-    margin-bottom:20px;
-}
-
-.reward-number{
-    font-size:45px;
-    font-weight:900;
-    color:#b7ff00;
-}
-
-/* LAUNCH */
+/* =========================
+   LAUNCH
+========================= */
 
 .launch{
-    text-align:center;
+  max-width:1150px;
+  text-align:center;
+  border:1px solid #b7ff0030;
+  border-radius:28px;
+
+  background:
+    radial-gradient(
+      circle,
+      #b7ff0015,
+      transparent 50%
+    ),
+    #ffffff05
 }
 
-.launch .section-description{
-    margin:0 auto;
+.date{
+  font-size:clamp(40px,7vw,82px);
+  font-weight:900;
+  color:var(--lime);
+  margin:20px 0;
+  text-shadow:0 0 35px #b7ff0040
 }
 
-.countdown{
-    margin:50px auto;
-    max-width:800px;
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:15px;
+.notice{
+  max-width:760px;
+  margin:20px auto;
+  color:var(--muted);
+  line-height:1.7
 }
 
-.time{
-    background:#0c0e0f;
-    border:1px solid #222;
-    padding:25px 10px;
-    border-radius:15px;
-}
-
-.time strong{
-    display:block;
-    font-size:38px;
-    color:#b7ff00;
-}
-
-.time span{
-    color:#777;
-    font-size:12px;
-    letter-spacing:2px;
-}
-
-/* DISCLAIMER */
-
-.disclaimer{
-    max-width:900px;
-    margin:50px auto 0;
-    color:#777;
-    font-size:12px;
-    line-height:1.7;
-    border-top:1px solid #222;
-    padding-top:25px;
-}
-
-/* FOOTER */
+/* =========================
+   FOOTER
+========================= */
 
 footer{
-    border-top:1px solid #191b1c;
-    padding:50px 7%;
-    display:flex;
-    justify-content:space-between;
-    gap:20px;
-    flex-wrap:wrap;
+  text-align:center;
+  border-top:1px solid var(--line);
+  padding:35px 20px;
+  color:#747b89;
+  font-size:13px
 }
 
-footer p{
-    color:#666;
+footer span{
+  color:var(--lime)
 }
 
-.social{
-    display:flex;
-    gap:20px;
-}
+/* =========================
+   ANIMATIONS
+========================= */
 
-.social a{
-    color:#999;
-    text-decoration:none;
+@keyframes pulse{
+  50%{
+    transform:scale(1.04);
+    box-shadow:0 0 55px #b7ff0040
+  }
 }
-
-.social a:hover{
-    color:#b7ff00;
-}
-
-/* ANIMATIONS */
 
 @keyframes float{
-    0%,100%{
-        transform:translateY(0);
-    }
-    50%{
-        transform:translateY(-15px);
-    }
+  50%{
+    transform:translate(-50%,-58%)
+  }
 }
 
-@keyframes fadeUp{
-    from{
-        opacity:0;
-        transform:translateY(30px);
-    }
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:800px){
+
+  .menu{
+    display:block
+  }
+
+  .links{
+    display:none;
+    position:absolute;
+    top:72px;
+    left:15px;
+    right:15px;
+    padding:10px;
+    background:#08090df5;
+    border:1px solid var(--line);
+    border-radius:14px;
+    flex-direction:column
+  }
+
+  .links.open{
+    display:flex
+  }
+
+  .links a{
+    text-align:center
+  }
+
+  .cards,
+  .universe{
+    grid-template-columns:1fr
+  }
+
+  section{
+    padding:75px 18px
+  }
+
+  h1{
+    letter-spacing:-2px
+  }
 }
-
-/* MOBILE */
-
-@media(max-width:850px){
-
-    nav{
-        padding:0 5%;
-    }
-
-    nav ul{
-        gap:12px;
-    }
-
-    nav a{
-        font-size:11px;
-    }
-
-    .hero{
-        grid-template-columns:1fr;
-        text-align:center;
-        padding-top:120px;
-    }
-
-    .hero p{
-        margin-left:auto;
-        margin-right:auto;
-    }
-
-    .buttons{
-        justify-content:center;
-    }
-
-    .game-grid{
-        grid-template-columns:1fr;
-    }
-
-    .token-grid{
-        grid-template-columns:1fr 1fr;
-    }
-
-    .reward-box{
-        grid-template-columns:1fr;
-    }
-
-    .countdown{
-        grid-template-columns:1fr 1fr;
-    }
-
-    .universe-box{
-        padding:30px;
-    }
-}
-
-@media(max-width:500px){
-
-    nav ul{
-        gap:8px;
-    }
-
-    nav a{
-        font-size:9px;
-    }
-
-    h1{
-        letter-spacing:-3px;
-    }
-
-    .token-grid{
-        grid-template-columns:1fr;
-    }
-
-    section{
-        padding:80px 5%;
-    }
-}
-
 </style>
 </head>
 
 <body>
 
-<!-- NAVIGATION -->
+<header>
 
 <nav>
 
-<div class="logo">
+<a class="logo" href="index.html">
 OMNI<span>X</span>
-</div>
+</a>
 
-<ul>
-<li><a href="#game">GAME</a></li>
-<li><a href="#universe">UNIVERSE</a></li>
-<li><a href="#token">ONX</a></li>
-<li><a href="#rewards">REWARDS</a></li>
-<li><a href="#launch">LAUNCH</a></li>
-</ul>
+<button class="menu" id="menu">
+☰
+</button>
+
+<div class="links" id="links">
+
+<a href="index.html">
+HOME
+</a>
+
+<a href="game.html">
+GAME
+</a>
+
+<a href="#universe">
+UNIVERSE
+</a>
+
+<a href="#onx">
+ONX
+</a>
+
+<a href="#launch">
+LAUNCH
+</a>
+
+<a href="rewards.html">
+REWARDS
+</a>
+
+</div>
 
 </nav>
-
-
-<!-- HERO -->
-
-<header class="hero">
-
-<div class="hero-text">
-
-<div class="kicker">
-A NEW TRANSFORMATION UNIVERSE
-</div>
-
-<h1>
-THE POWER<br>
-TO BECOME<br>
-<span>ANYTHING.</span>
-</h1>
-
-<p>
-Enter the OmniX universe. Discover original worlds,
-characters and transformations while the community
-builds toward the planned game launch in 2027.
-</p>
-
-<div class="buttons">
-
-<a href="#game" class="btn btn-primary">
-EXPLORE OMNIX
-</a>
-
-<a href="#rewards" class="btn btn-outline">
-INVITE & EARN
-</a>
-
-</div>
-
-</div>
-
-
-<div class="hero-art">
-
-<div class="glow"></div>
-
-<img src="assets/hero.svg"
-alt="OmniX universe artwork">
-
-</div>
 
 </header>
 
 
-<!-- GAME -->
+<main>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero">
+
+<div>
+
+<div class="eyebrow">
+A NEW TRANSFORMATION UNIVERSE
+</div>
+
+<h1>
+THE POWER TO
+<br>
+<span>BECOME ANYTHING.</span>
+</h1>
+
+<p>
+Enter the OmniX universe.
+Discover original alien worlds,
+transformations and an evolving
+digital adventure.
+The planned game introduction is
+<strong>27 July 2027</strong>.
+</p>
+
+<div class="actions">
+
+<a
+class="btn primary"
+href="game.html"
+>
+EXPLORE OMNIX
+</a>
+
+<a
+class="btn secondary"
+href="rewards.html"
+>
+INVITE &amp; EARN
+</a>
+
+</div>
+
+<div class="portal"></div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     GAME
+========================= -->
 
 <section id="game">
 
-<div class="section-label">
+<div class="section-head">
+
+<div class="kicker">
 GAME
 </div>
 
-<h2 class="section-title">
-A universe built for transformation.
+<h2>
+A gateway into the OmniX universe.
 </h2>
 
-<p class="section-description">
-OmniX is planned as an original game universe where
-players can explore alien worlds, discover characters,
-unlock transformations and participate in an evolving
-digital adventure.
-</p>
-
-
-<div class="game-grid">
-
-<div class="card">
-
-<div class="icon">👽</div>
-
-<h3>Alien Worlds</h3>
-
-<p>
-Explore mysterious planets, environments and
-original alien civilizations.
+<p class="lead">
+A planned original game concept built around
+exploration, transformation, characters
+and competitive progression.
 </p>
 
 </div>
 
 
-<div class="card">
+<div class="cards">
 
-<div class="icon">⚡</div>
+<article class="card">
 
-<h3>Transformations</h3>
-
-<p>
-Discover different forms and abilities as the
-OmniX universe expands.
-</p>
-
+<div class="icon">
+👽
 </div>
-
-
-<div class="card">
-
-<div class="icon">🎮</div>
-
-<h3>Play & Explore</h3>
-
-<p>
-A game-first universe designed around exploration,
-competition and progression.
-</p>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- UNIVERSE -->
-
-<section id="universe" class="universe">
-
-<div class="section-label">
-OMNIX UNIVERSE
-</div>
-
-<h2 class="section-title">
-Your story starts here.
-</h2>
-
-<div class="universe-box">
-
-<p>
-The OmniX universe is being developed as a community
-concept around gaming, digital collectibles and an
-original science-fiction world.
-
-Players will eventually be able to discover different
-worlds, characters and challenges.
-
-The website will evolve alongside the project as
-features become available.
-</p>
-
-</div>
-
-</section>
-
-
-<!-- TOKEN -->
-
-<section id="token">
-
-<div class="section-label">
-ONX
-</div>
-
-<h2 class="section-title">
-The OmniX ecosystem.
-</h2>
-
-<p class="section-description">
-ONX is intended to be the community token associated
-with the OmniX ecosystem. Token information below should
-be updated with the project's verified contract and
-tokenomics before launch.
-</p>
-
-
-<div class="token-grid">
-
-<div class="stat">
-<strong>ONX</strong>
-<small>Token symbol</small>
-</div>
-
-<div class="stat">
-<strong>BNB</strong>
-<small>Planned network</small>
-</div>
-
-<div class="stat">
-<strong>2027</strong>
-<small>Planned game launch</small>
-</div>
-
-<div class="stat">
-<strong>∞</strong>
-<small>Universe expansion</small>
-</div>
-
-</div>
-
-</section>
-
-
-<!-- REWARDS -->
-
-<section id="rewards" class="rewards">
-
-<div class="section-label">
-COMMUNITY
-</div>
-
-<h2 class="section-title">
-Invite. Participate. Earn.
-</h2>
-
-<p class="section-description">
-A planned community referral system can reward eligible
-participants for bringing new members into the OmniX
-community.
-</p>
-
-
-<div class="reward-box">
-
-<div class="reward-card">
 
 <h3>
-🎁 Invite Rewards
+Alien Worlds
 </h3>
 
 <p>
-Each participant can have a unique referral link.
-Referral rules, eligibility and reward amounts will be
-published officially before the program begins.
+Explore mysterious planets, environments
+and original civilizations created for
+the OmniX universe.
 </p>
 
-<div class="reward-number">
-ONX
+</article>
+
+
+<article class="card">
+
+<div class="icon">
+⚡
 </div>
-
-</div>
-
-
-<div class="reward-card">
 
 <h3>
-🔒 Lock & Participate
+Transformations
 </h3>
 
 <p>
-A planned locking mechanism may allow eligible users to
-lock ONX for a defined period. Exact terms and rewards
-will be announced by the project.
+Discover different forms, abilities and
+character paths as the universe expands.
 </p>
 
-<div class="reward-number">
-2027
+</article>
+
+
+<article class="card">
+
+<div class="icon">
+🎮
 </div>
 
-</div>
+<h3>
+Play &amp; Explore
+</h3>
+
+<p>
+A game-first experience designed around
+exploration, competition and progression.
+</p>
+
+</article>
 
 </div>
 
 </section>
 
 
-<!-- LAUNCH -->
+<!-- =========================
+     UNIVERSE
+========================= -->
 
-<section id="launch" class="launch">
+<section id="universe">
 
-<div class="section-label">
-GAME INTRODUCTION
+<div class="section-head">
+
+<div class="kicker">
+UNIVERSE
 </div>
 
-<h2 class="section-title">
-27 JULY 2027
+<h2>
+Enter another world.
 </h2>
 
-<p class="section-description">
-Planned OmniX game introduction date.
+<p class="lead">
+OmniX is an original fictional game universe.
+Its characters, worlds and visual identity
+can evolve as development continues.
+</p>
+
+</div>
+
+
+<div class="universe">
+
+
+<div class="visual">
+
+<div class="planet"></div>
+
+<label>
+OMNIX // UNKNOWN WORLD
+</label>
+
+</div>
+
+
+<div class="info">
+
+<h3>
+Characters. Worlds. Transformations.
+</h3>
+
+<p>
+The goal is to build a universe where
+every character has a distinct identity
+and every world introduces something new.
 </p>
 
 
-<div class="countdown">
+<div class="list">
 
-<div class="time">
-<strong id="days">---</strong>
-<span>DAYS</span>
+<div>
+<span class="check">✓</span>
+Original alien characters
 </div>
 
-<div class="time">
-<strong id="hours">--</strong>
-<span>HOURS</span>
+<div>
+<span class="check">✓</span>
+Transformation-based abilities
 </div>
 
-<div class="time">
-<strong id="minutes">--</strong>
-<span>MINUTES</span>
+<div>
+<span class="check">✓</span>
+Exploration and progression
 </div>
 
-<div class="time">
-<strong id="seconds">--</strong>
-<span>SECONDS</span>
+<div>
+<span class="check">✓</span>
+Future multiplayer possibilities
 </div>
 
 </div>
 
 
-<a href="#rewards" class="btn btn-primary">
-JOIN THE JOURNEY
+<div
+class="actions"
+style="justify-content:flex-start"
+>
+
+<a
+class="btn primary"
+href="game.html"
+>
+VIEW GAME
 </a>
 
+</div>
 
-<div class="disclaimer">
-
-OmniX is a developing project concept. Game features,
-token utilities, referral programs, rewards, launch
-dates and tokenomics may change. Nothing on this website
-should be interpreted as a promise of financial returns
-or guaranteed rewards. Always verify official contract
-addresses and announcements before interacting with any
-token or smart contract.
+</div>
 
 </div>
 
 </section>
 
 
-<!-- FOOTER -->
+<!-- =========================
+     ONX
+========================= -->
+
+<section id="onx">
+
+<div class="section-head">
+
+<div class="kicker">
+ONX
+</div>
+
+<h2>
+The community token concept.
+</h2>
+
+<p class="lead">
+ONX is presented as the digital token
+concept associated with OmniX.
+Token supply, utility, distribution
+and reward rules should be published
+transparently before launch.
+</p>
+
+</div>
+
+
+<div class="cards">
+
+
+<article class="card">
+
+<div class="icon">
+◈
+</div>
+
+<h3>
+Community
+</h3>
+
+<p>
+Build a community around the OmniX universe
+and its future game ecosystem.
+</p>
+
+</article>
+
+
+<article class="card">
+
+<div class="icon">
+🔐
+</div>
+
+<h3>
+Lock &amp; Participate
+</h3>
+
+<p>
+Planned locking and participation features
+can be added once the underlying system
+is implemented.
+</p>
+
+</article>
+
+
+<article class="card">
+
+<div class="icon">
+🏆
+</div>
+
+<h3>
+Rewards
+</h3>
+
+<p>
+Referral and community rewards can be
+displayed through the Rewards page after
+a real account system is connected.
+</p>
+
+</article>
+
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     LAUNCH
+========================= -->
+
+<section id="launch">
+
+<div class="launch">
+
+<div class="kicker">
+PLANNED GAME INTRODUCTION
+</div>
+
+<div class="date">
+27 JULY 2027
+</div>
+
+<p class="notice">
+Earning, locking and reward features shown
+on this website are planned concepts until
+the underlying account system and any
+applicable smart contracts are deployed
+and verified.
+Displayed figures are not guaranteed returns.
+</p>
+
+
+<div class="actions">
+
+<a
+class="btn primary"
+href="game.html"
+>
+ENTER GAME
+</a>
+
+<a
+class="btn secondary"
+href="rewards.html"
+>
+REWARDS CENTER
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+
+</main>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
 
 <footer>
 
-<div>
-<div class="logo">
-OMNI<span>X</span>
-</div>
-
 <p>
-The power to become anything.
+© 2026
+<span>OmniX</span>
+— Original game universe &amp; community project.
 </p>
 
-</div>
-
-
-<div class="social">
-
-<a href="#">X</a>
-<a href="#">Telegram</a>
-<a href="#">Discord</a>
-</div>
+<p style="margin-top:8px">
+Project information and launch plans may change.
+</p>
 
 </footer>
 
 
 <script>
 
-/* COUNTDOWN */
+const menu =
+document.getElementById('menu');
 
-const launchDate =
-new Date("2027-07-27T00:00:00").getTime();
+const links =
+document.getElementById('links');
 
-function updateCountdown(){
+menu.onclick = () =>
+links.classList.toggle('open');
 
-    const now = new Date().getTime();
-
-    const distance = launchDate - now;
-
-    if(distance <= 0){
-
-        document.getElementById("days").innerText="0";
-        document.getElementById("hours").innerText="0";
-        document.getElementById("minutes").innerText="0";
-        document.getElementById("seconds").innerText="0";
-
-        return;
-    }
-
-    const days =
-    Math.floor(distance/(1000*60*60*24));
-
-    const hours =
-    Math.floor((distance%(1000*60*60*24))/(1000*60*60));
-
-    const minutes =
-    Math.floor((distance%(1000*60*60))/(1000*60));
-
-    const seconds =
-    Math.floor((distance%(1000*60))/1000);
-
-    document.getElementById("days").innerText=days;
-
-    document.getElementById("hours").innerText=
-    String(hours).padStart(2,"0");
-
-    document.getElementById("minutes").innerText=
-    String(minutes).padStart(2,"0");
-
-    document.getElementById("seconds").innerText=
-    String(seconds).padStart(2,"0");
-}
-
-updateCountdown();
-
-setInterval(updateCountdown,1000);
+document
+.querySelectorAll('.links a')
+.forEach(a =>
+a.onclick = () =>
+links.classList.remove('open')
+);
 
 </script>
 
