@@ -1,626 +1,965 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>OmniX — ONX</title>
-  <meta name="description" content="OmniX (ONX) — a community-built digital token ecosystem on BNB Smart Chain.">
+<title>OmniX — Enter the Universe</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+<meta name="description"
+content="OmniX — an original game universe and ONX community ecosystem. Explore, earn, build and prepare for the planned 2027 game launch.">
+
+<style>
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#050607;
+    color:#fff;
+    font-family:Arial,Helvetica,sans-serif;
+    overflow-x:hidden;
+}
+
+/* BACKGROUND */
+
+body:before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:
+      radial-gradient(circle at 20% 20%,rgba(150,255,0,.10),transparent 30%),
+      radial-gradient(circle at 80% 40%,rgba(0,255,190,.08),transparent 30%),
+      radial-gradient(circle at 50% 90%,rgba(130,0,255,.08),transparent 35%);
+    pointer-events:none;
+    z-index:-2;
+}
+
+/* NAVIGATION */
+
+nav{
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    height:72px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 6%;
+    background:rgba(5,6,7,.75);
+    backdrop-filter:blur(18px);
+    border-bottom:1px solid rgba(255,255,255,.08);
+    z-index:1000;
+}
+
+.logo{
+    font-size:25px;
+    font-weight:900;
+    letter-spacing:4px;
+}
+
+.logo span{
+    color:#b7ff00;
+    text-shadow:0 0 20px #b7ff00;
+}
+
+nav ul{
+    display:flex;
+    gap:30px;
+    list-style:none;
+}
+
+nav a{
+    color:#ddd;
+    text-decoration:none;
+    font-size:14px;
+    font-weight:bold;
+    transition:.3s;
+}
+
+nav a:hover{
+    color:#b7ff00;
+}
+
+/* HERO */
+
+.hero{
+    min-height:100vh;
+    padding:140px 7% 80px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    align-items:center;
+    gap:40px;
+    position:relative;
+}
+
+.hero-text{
+    animation:fadeUp 1s ease;
+}
+
+.kicker{
+    color:#b7ff00;
+    letter-spacing:5px;
+    font-size:13px;
+    font-weight:bold;
+    margin-bottom:20px;
+}
+
+h1{
+    font-size:clamp(50px,7vw,100px);
+    line-height:.9;
+    letter-spacing:-5px;
+    margin-bottom:30px;
+}
+
+h1 span{
+    color:#b7ff00;
+    text-shadow:
+       0 0 15px rgba(183,255,0,.7),
+       0 0 50px rgba(183,255,0,.25);
+}
+
+.hero p{
+    max-width:600px;
+    color:#aaa;
+    font-size:18px;
+    line-height:1.7;
+    margin-bottom:35px;
+}
+
+.buttons{
+    display:flex;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    padding:16px 25px;
+    border-radius:8px;
+    text-decoration:none;
+    font-weight:bold;
+    display:inline-block;
+    transition:.3s;
+}
+
+.btn-primary{
+    background:#b7ff00;
+    color:#050607;
+    box-shadow:0 0 30px rgba(183,255,0,.25);
+}
+
+.btn-primary:hover{
+    transform:translateY(-3px);
+    box-shadow:0 0 45px rgba(183,255,0,.55);
+}
+
+.btn-outline{
+    border:1px solid #555;
+    color:#fff;
+}
+
+.btn-outline:hover{
+    border-color:#b7ff00;
+    color:#b7ff00;
+}
+
+.hero-art{
+    position:relative;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.hero-art img{
+    width:min(650px,100%);
+    max-height:600px;
+    object-fit:contain;
+    filter:
+      drop-shadow(0 0 25px rgba(183,255,0,.25))
+      drop-shadow(0 0 80px rgba(0,255,180,.12));
+    animation:float 5s ease-in-out infinite;
+}
+
+/* GLOW */
+
+.glow{
+    position:absolute;
+    width:300px;
+    height:300px;
+    border-radius:50%;
+    background:#b7ff00;
+    filter:blur(130px);
+    opacity:.12;
+    z-index:-1;
+}
+
+/* SECTIONS */
+
+section{
+    padding:110px 7%;
+}
+
+.section-label{
+    color:#b7ff00;
+    font-size:12px;
+    letter-spacing:4px;
+    font-weight:bold;
+    margin-bottom:15px;
+}
+
+.section-title{
+    font-size:clamp(35px,5vw,65px);
+    margin-bottom:20px;
+}
+
+.section-description{
+    color:#999;
+    max-width:700px;
+    line-height:1.7;
+}
+
+/* GAME */
+
+.game-grid{
+    margin-top:55px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.card{
+    background:linear-gradient(
+       145deg,
+       rgba(255,255,255,.07),
+       rgba(255,255,255,.025)
+    );
+    border:1px solid rgba(255,255,255,.09);
+    border-radius:18px;
+    padding:35px;
+    transition:.4s;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+    border-color:rgba(183,255,0,.45);
+    box-shadow:0 20px 60px rgba(0,0,0,.35);
+}
+
+.icon{
+    font-size:42px;
+    margin-bottom:20px;
+}
+
+.card h3{
+    font-size:22px;
+    margin-bottom:12px;
+}
+
+.card p{
+    color:#999;
+    line-height:1.6;
+}
+
+/* UNIVERSE */
+
+.universe{
+    background:
+      linear-gradient(
+        90deg,
+        rgba(183,255,0,.04),
+        transparent,
+        rgba(0,255,200,.04)
+      );
+}
+
+.universe-box{
+    margin-top:50px;
+    border:1px solid rgba(255,255,255,.1);
+    border-radius:25px;
+    padding:50px;
+    background:rgba(255,255,255,.025);
+}
+
+.universe-box p{
+    color:#aaa;
+    font-size:18px;
+    line-height:1.9;
+    max-width:900px;
+}
+
+/* TOKEN */
+
+.token-grid{
+    margin-top:50px;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:18px;
+}
+
+.stat{
+    padding:30px;
+    border-radius:15px;
+    background:#0c0e0f;
+    border:1px solid #202426;
+}
+
+.stat strong{
+    display:block;
+    font-size:30px;
+    color:#b7ff00;
+    margin-bottom:10px;
+}
+
+.stat small{
+    color:#888;
+}
+
+/* REWARDS */
+
+.rewards{
+    background:#07090a;
+}
+
+.reward-box{
+    margin-top:50px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:25px;
+}
+
+.reward-card{
+    border:1px solid rgba(183,255,0,.15);
+    border-radius:20px;
+    padding:40px;
+    background:
+      radial-gradient(circle at top right,
+      rgba(183,255,0,.08),
+      transparent 40%),
+      #0b0d0e;
+}
+
+.reward-card h3{
+    font-size:27px;
+    margin-bottom:15px;
+}
+
+.reward-card p{
+    color:#999;
+    line-height:1.7;
+    margin-bottom:20px;
+}
+
+.reward-number{
+    font-size:45px;
+    font-weight:900;
+    color:#b7ff00;
+}
+
+/* LAUNCH */
+
+.launch{
+    text-align:center;
+}
+
+.launch .section-description{
+    margin:0 auto;
+}
+
+.countdown{
+    margin:50px auto;
+    max-width:800px;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+}
+
+.time{
+    background:#0c0e0f;
+    border:1px solid #222;
+    padding:25px 10px;
+    border-radius:15px;
+}
+
+.time strong{
+    display:block;
+    font-size:38px;
+    color:#b7ff00;
+}
+
+.time span{
+    color:#777;
+    font-size:12px;
+    letter-spacing:2px;
+}
+
+/* DISCLAIMER */
+
+.disclaimer{
+    max-width:900px;
+    margin:50px auto 0;
+    color:#777;
+    font-size:12px;
+    line-height:1.7;
+    border-top:1px solid #222;
+    padding-top:25px;
+}
+
+/* FOOTER */
+
+footer{
+    border-top:1px solid #191b1c;
+    padding:50px 7%;
+    display:flex;
+    justify-content:space-between;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+footer p{
+    color:#666;
+}
+
+.social{
+    display:flex;
+    gap:20px;
+}
+
+.social a{
+    color:#999;
+    text-decoration:none;
+}
+
+.social a:hover{
+    color:#b7ff00;
+}
+
+/* ANIMATIONS */
+
+@keyframes float{
+    0%,100%{
+        transform:translateY(0);
+    }
+    50%{
+        transform:translateY(-15px);
+    }
+}
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* MOBILE */
+
+@media(max-width:850px){
+
+    nav{
+        padding:0 5%;
     }
 
-    html {
-      scroll-behavior: smooth;
+    nav ul{
+        gap:12px;
     }
 
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      background: #05070d;
-      color: #ffffff;
-      line-height: 1.6;
+    nav a{
+        font-size:11px;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
+    .hero{
+        grid-template-columns:1fr;
+        text-align:center;
+        padding-top:120px;
     }
 
-    .container {
-      width: min(1120px, 92%);
-      margin: auto;
+    .hero p{
+        margin-left:auto;
+        margin-right:auto;
     }
 
-    /* NAVIGATION */
-    nav {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      z-index: 1000;
-      background: rgba(5, 7, 13, 0.85);
-      backdrop-filter: blur(15px);
-      border-bottom: 1px solid #202532;
+    .buttons{
+        justify-content:center;
     }
 
-    .nav-inner {
-      height: 72px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+    .game-grid{
+        grid-template-columns:1fr;
     }
 
-    .logo {
-      font-size: 25px;
-      font-weight: 900;
-      letter-spacing: 1px;
+    .token-grid{
+        grid-template-columns:1fr 1fr;
     }
 
-    .logo span {
-      color: #00e5ff;
+    .reward-box{
+        grid-template-columns:1fr;
     }
 
-    .nav-links {
-      display: flex;
-      gap: 25px;
-      font-size: 14px;
-      color: #c6cbd5;
+    .countdown{
+        grid-template-columns:1fr 1fr;
     }
 
-    .nav-links a:hover {
-      color: #00e5ff;
+    .universe-box{
+        padding:30px;
+    }
+}
+
+@media(max-width:500px){
+
+    nav ul{
+        gap:8px;
     }
 
-    .nav-button {
-      background: #00e5ff;
-      color: #001015;
-      padding: 10px 18px;
-      border-radius: 9px;
-      font-weight: 800;
+    nav a{
+        font-size:9px;
     }
 
-    /* HERO */
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      text-align: center;
-      padding-top: 100px;
-      background:
-        radial-gradient(circle at 50% 35%, rgba(0,229,255,.15), transparent 35%),
-        radial-gradient(circle at 20% 80%, rgba(100,50,255,.12), transparent 30%);
+    h1{
+        letter-spacing:-3px;
     }
 
-    .badge {
-      display: inline-block;
-      padding: 8px 15px;
-      border: 1px solid #194c59;
-      background: #07171d;
-      border-radius: 30px;
-      color: #00e5ff;
-      font-size: 13px;
-      margin-bottom: 25px;
+    .token-grid{
+        grid-template-columns:1fr;
     }
 
-    .hero h1 {
-      font-size: clamp(55px, 10vw, 110px);
-      line-height: .9;
-      letter-spacing: -5px;
-      margin-bottom: 25px;
+    section{
+        padding:80px 5%;
     }
+}
 
-    .hero h1 span {
-      color: #00e5ff;
-    }
-
-    .hero p {
-      max-width: 700px;
-      margin: auto;
-      color: #aeb5c2;
-      font-size: 19px;
-    }
-
-    .hero-buttons {
-      margin-top: 35px;
-      display: flex;
-      justify-content: center;
-      gap: 14px;
-      flex-wrap: wrap;
-    }
-
-    .button {
-      padding: 14px 24px;
-      border-radius: 10px;
-      font-weight: 800;
-      border: 1px solid #29313d;
-    }
-
-    .primary {
-      background: #00e5ff;
-      color: #001015;
-    }
-
-    .secondary {
-      background: #10141c;
-    }
-
-    .contract {
-      margin: 35px auto 0;
-      max-width: 700px;
-      padding: 15px;
-      background: #0c1018;
-      border: 1px solid #222a36;
-      border-radius: 12px;
-      color: #929baa;
-      font-size: 12px;
-      word-break: break-all;
-    }
-
-    /* SECTIONS */
-    section {
-      padding: 100px 0;
-    }
-
-    .section-title {
-      text-align: center;
-      margin-bottom: 55px;
-    }
-
-    .section-title h2 {
-      font-size: 42px;
-      margin-bottom: 12px;
-    }
-
-    .section-title p {
-      color: #929baa;
-    }
-
-    /* CARDS */
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-
-    .card {
-      background: #0c1018;
-      border: 1px solid #202735;
-      padding: 30px;
-      border-radius: 18px;
-    }
-
-    .card h3 {
-      margin-bottom: 10px;
-      font-size: 20px;
-    }
-
-    .card p {
-      color: #929baa;
-      font-size: 15px;
-    }
-
-    .number {
-      color: #00e5ff;
-      font-size: 30px;
-      font-weight: 900;
-      margin-bottom: 10px;
-    }
-
-    /* TOKENOMICS */
-    .tokenomics {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 25px;
-    }
-
-    .token-box {
-      background: #0c1018;
-      border: 1px solid #202735;
-      padding: 35px;
-      border-radius: 18px;
-    }
-
-    .token-row {
-      display: flex;
-      justify-content: space-between;
-      padding: 17px 0;
-      border-bottom: 1px solid #202735;
-    }
-
-    .token-row:last-child {
-      border-bottom: 0;
-    }
-
-    .token-row span:first-child {
-      color: #8f98a8;
-    }
-
-    .token-row span:last-child {
-      font-weight: 700;
-    }
-
-    /* ROADMAP */
-    .roadmap {
-      max-width: 800px;
-      margin: auto;
-    }
-
-    .phase {
-      display: grid;
-      grid-template-columns: 120px 1fr;
-      gap: 25px;
-      padding: 25px 0;
-      border-bottom: 1px solid #202735;
-    }
-
-    .phase-number {
-      color: #00e5ff;
-      font-weight: 900;
-    }
-
-    .phase p {
-      color: #929baa;
-      margin-top: 5px;
-    }
-
-    /* CTA */
-    .cta {
-      text-align: center;
-      background: linear-gradient(135deg, #07151c, #0b0e1b);
-      border: 1px solid #20343c;
-      border-radius: 25px;
-      padding: 70px 25px;
-    }
-
-    .cta h2 {
-      font-size: 45px;
-      margin-bottom: 15px;
-    }
-
-    .cta p {
-      color: #9da5b4;
-      margin-bottom: 30px;
-    }
-
-    /* FOOTER */
-    footer {
-      border-top: 1px solid #202735;
-      padding: 45px 0;
-      color: #737c8c;
-      text-align: center;
-      font-size: 13px;
-    }
-
-    footer strong {
-      color: white;
-    }
-
-    /* MOBILE */
-    @media(max-width: 800px) {
-      .nav-links {
-        display: none;
-      }
-
-      .grid,
-      .tokenomics {
-        grid-template-columns: 1fr;
-      }
-
-      .hero h1 {
-        letter-spacing: -3px;
-      }
-
-      .phase {
-        grid-template-columns: 1fr;
-        gap: 5px;
-      }
-
-      .section-title h2 {
-        font-size: 34px;
-      }
-    }
-  </style>
+</style>
 </head>
 
 <body>
 
+<!-- NAVIGATION -->
+
 <nav>
-  <div class="container nav-inner">
-    <div class="logo">OMNI<span>X</span></div>
 
-    <div class="nav-links">
-      <a href="#about">About</a>
-      <a href="#token">Token</a>
-      <a href="#utility">Utility</a>
-      <a href="#roadmap">Roadmap</a>
-    </div>
+<div class="logo">
+OMNI<span>X</span>
+</div>
 
-    <a class="nav-button" href="#buy">GET ONX</a>
-  </div>
+<ul>
+<li><a href="#game">GAME</a></li>
+<li><a href="#universe">UNIVERSE</a></li>
+<li><a href="#token">ONX</a></li>
+<li><a href="#rewards">REWARDS</a></li>
+<li><a href="#launch">LAUNCH</a></li>
+</ul>
+
 </nav>
 
+
 <!-- HERO -->
+
 <header class="hero">
-  <div class="container">
 
-    <div class="badge">BNB SMART CHAIN • ONX</div>
+<div class="hero-text">
 
-    <h1>OMNI<span>X</span></h1>
+<div class="kicker">
+A NEW TRANSFORMATION UNIVERSE
+</div>
 
-    <p>
-      A community-built digital token ecosystem exploring
-      gaming, payments and Web3 utility.
-    </p>
+<h1>
+THE POWER<br>
+TO BECOME<br>
+<span>ANYTHING.</span>
+</h1>
 
-    <div class="hero-buttons">
-      <a class="button primary" href="#buy">Explore ONX</a>
-      <a class="button secondary" href="#token">Token Details</a>
-    </div>
+<p>
+Enter the OmniX universe. Discover original worlds,
+characters and transformations while the community
+builds toward the planned game launch in 2027.
+</p>
 
-    <div class="contract">
-      <strong>ONX Contract</strong><br><br>
-      0xBcEB18a1380a1E72cc4026A80F6748B68290A40E
-    </div>
+<div class="buttons">
 
-  </div>
+<a href="#game" class="btn btn-primary">
+EXPLORE OMNIX
+</a>
+
+<a href="#rewards" class="btn btn-outline">
+INVITE & EARN
+</a>
+
+</div>
+
+</div>
+
+
+<div class="hero-art">
+
+<div class="glow"></div>
+
+<img src="assets/hero.svg"
+alt="OmniX universe artwork">
+
+</div>
+
 </header>
 
-<!-- ABOUT -->
-<section id="about">
-  <div class="container">
 
-    <div class="section-title">
-      <h2>What is OmniX?</h2>
-      <p>Built as an experimental community-driven Web3 project.</p>
-    </div>
+<!-- GAME -->
 
-    <div class="grid">
+<section id="game">
 
-      <div class="card">
-        <div class="number">01</div>
-        <h3>Community</h3>
-        <p>
-          OmniX is designed around an open community and
-          transparent on-chain activity.
-        </p>
-      </div>
+<div class="section-label">
+GAME
+</div>
 
-      <div class="card">
-        <div class="number">02</div>
-        <h3>Web3</h3>
-        <p>
-          ONX operates as a BEP-20 compatible token on
-          BNB Smart Chain.
-        </p>
-      </div>
+<h2 class="section-title">
+A universe built for transformation.
+</h2>
 
-      <div class="card">
-        <div class="number">03</div>
-        <h3>Future Utility</h3>
-        <p>
-          The project is exploring future applications involving
-          gaming and digital payments.
-        </p>
-      </div>
+<p class="section-description">
+OmniX is planned as an original game universe where
+players can explore alien worlds, discover characters,
+unlock transformations and participate in an evolving
+digital adventure.
+</p>
 
-    </div>
-  </div>
+
+<div class="game-grid">
+
+<div class="card">
+
+<div class="icon">👽</div>
+
+<h3>Alien Worlds</h3>
+
+<p>
+Explore mysterious planets, environments and
+original alien civilizations.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">⚡</div>
+
+<h3>Transformations</h3>
+
+<p>
+Discover different forms and abilities as the
+OmniX universe expands.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">🎮</div>
+
+<h3>Play & Explore</h3>
+
+<p>
+A game-first universe designed around exploration,
+competition and progression.
+</p>
+
+</div>
+
+</div>
+
 </section>
+
+
+<!-- UNIVERSE -->
+
+<section id="universe" class="universe">
+
+<div class="section-label">
+OMNIX UNIVERSE
+</div>
+
+<h2 class="section-title">
+Your story starts here.
+</h2>
+
+<div class="universe-box">
+
+<p>
+The OmniX universe is being developed as a community
+concept around gaming, digital collectibles and an
+original science-fiction world.
+
+Players will eventually be able to discover different
+worlds, characters and challenges.
+
+The website will evolve alongside the project as
+features become available.
+</p>
+
+</div>
+
+</section>
+
 
 <!-- TOKEN -->
+
 <section id="token">
-  <div class="container">
 
-    <div class="section-title">
-      <h2>ONX Token</h2>
-      <p>Simple and transparent token structure.</p>
-    </div>
+<div class="section-label">
+ONX
+</div>
 
-    <div class="tokenomics">
+<h2 class="section-title">
+The OmniX ecosystem.
+</h2>
 
-      <div class="token-box">
+<p class="section-description">
+ONX is intended to be the community token associated
+with the OmniX ecosystem. Token information below should
+be updated with the project's verified contract and
+tokenomics before launch.
+</p>
 
-        <div class="token-row">
-          <span>Name</span>
-          <span>OmniX</span>
-        </div>
 
-        <div class="token-row">
-          <span>Symbol</span>
-          <span>ONX</span>
-        </div>
+<div class="token-grid">
 
-        <div class="token-row">
-          <span>Network</span>
-          <span>BNB Smart Chain</span>
-        </div>
+<div class="stat">
+<strong>ONX</strong>
+<small>Token symbol</small>
+</div>
 
-        <div class="token-row">
-          <span>Standard</span>
-          <span>BEP-20</span>
-        </div>
+<div class="stat">
+<strong>BNB</strong>
+<small>Planned network</small>
+</div>
 
-      </div>
+<div class="stat">
+<strong>2027</strong>
+<small>Planned game launch</small>
+</div>
 
-      <div class="token-box">
+<div class="stat">
+<strong>∞</strong>
+<small>Universe expansion</small>
+</div>
 
-        <div class="token-row">
-          <span>Total Supply</span>
-          <span>10,000,000 ONX</span>
-        </div>
+</div>
 
-        <div class="token-row">
-          <span>Decimals</span>
-          <span>18</span>
-        </div>
-
-        <div class="token-row">
-          <span>Minting</span>
-          <span>Fixed Supply</span>
-        </div>
-
-        <div class="token-row">
-          <span>Tax</span>
-          <span>0%</span>
-        </div>
-
-      </div>
-
-    </div>
-  </div>
 </section>
 
-<!-- UTILITY -->
-<section id="utility">
-  <div class="container">
 
-    <div class="section-title">
-      <h2>Exploring Utility</h2>
-      <p>Potential directions for the OmniX ecosystem.</p>
-    </div>
+<!-- REWARDS -->
 
-    <div class="grid">
+<section id="rewards" class="rewards">
 
-      <div class="card">
-        <div class="number">🎮</div>
-        <h3>Gaming</h3>
-        <p>
-          Explore potential ONX applications within Web3 gaming
-          and digital entertainment.
-        </p>
-      </div>
+<div class="section-label">
+COMMUNITY
+</div>
 
-      <div class="card">
-        <div class="number">💳</div>
-        <h3>Payments</h3>
-        <p>
-          Researching possible digital payment applications
-          for future ecosystem development.
-        </p>
-      </div>
+<h2 class="section-title">
+Invite. Participate. Earn.
+</h2>
 
-      <div class="card">
-        <div class="number">🌐</div>
-        <h3>Web3 Ecosystem</h3>
-        <p>
-          Building tools and community experiences around
-          blockchain technology.
-        </p>
-      </div>
+<p class="section-description">
+A planned community referral system can reward eligible
+participants for bringing new members into the OmniX
+community.
+</p>
 
-    </div>
-  </div>
+
+<div class="reward-box">
+
+<div class="reward-card">
+
+<h3>
+🎁 Invite Rewards
+</h3>
+
+<p>
+Each participant can have a unique referral link.
+Referral rules, eligibility and reward amounts will be
+published officially before the program begins.
+</p>
+
+<div class="reward-number">
+ONX
+</div>
+
+</div>
+
+
+<div class="reward-card">
+
+<h3>
+🔒 Lock & Participate
+</h3>
+
+<p>
+A planned locking mechanism may allow eligible users to
+lock ONX for a defined period. Exact terms and rewards
+will be announced by the project.
+</p>
+
+<div class="reward-number">
+2027
+</div>
+
+</div>
+
+</div>
+
 </section>
 
-<!-- ROADMAP -->
-<section id="roadmap">
-  <div class="container">
 
-    <div class="section-title">
-      <h2>Roadmap</h2>
-      <p>Development happens step by step.</p>
-    </div>
+<!-- LAUNCH -->
 
-    <div class="roadmap">
+<section id="launch" class="launch">
 
-      <div class="phase">
-        <div class="phase-number">PHASE 01</div>
-        <div>
-          <h3>Foundation</h3>
-          <p>
-            Token deployment, website, branding and community channels.
-          </p>
-        </div>
-      </div>
+<div class="section-label">
+GAME INTRODUCTION
+</div>
 
-      <div class="phase">
-        <div class="phase-number">PHASE 02</div>
-        <div>
-          <h3>Community</h3>
-          <p>
-            Grow the community and establish transparent communication.
-          </p>
-        </div>
-      </div>
+<h2 class="section-title">
+27 JULY 2027
+</h2>
 
-      <div class="phase">
-        <div class="phase-number">PHASE 03</div>
-        <div>
-          <h3>Utility Research</h3>
-          <p>
-            Explore gaming, payment and Web3 applications.
-          </p>
-        </div>
-      </div>
+<p class="section-description">
+Planned OmniX game introduction date.
+</p>
 
-      <div class="phase">
-        <div class="phase-number">PHASE 04</div>
-        <div>
-          <h3>Ecosystem</h3>
-          <p>
-            Develop practical products and partnerships where feasible.
-          </p>
-        </div>
-      </div>
 
-    </div>
-  </div>
+<div class="countdown">
+
+<div class="time">
+<strong id="days">---</strong>
+<span>DAYS</span>
+</div>
+
+<div class="time">
+<strong id="hours">--</strong>
+<span>HOURS</span>
+</div>
+
+<div class="time">
+<strong id="minutes">--</strong>
+<span>MINUTES</span>
+</div>
+
+<div class="time">
+<strong id="seconds">--</strong>
+<span>SECONDS</span>
+</div>
+
+</div>
+
+
+<a href="#rewards" class="btn btn-primary">
+JOIN THE JOURNEY
+</a>
+
+
+<div class="disclaimer">
+
+OmniX is a developing project concept. Game features,
+token utilities, referral programs, rewards, launch
+dates and tokenomics may change. Nothing on this website
+should be interpreted as a promise of financial returns
+or guaranteed rewards. Always verify official contract
+addresses and announcements before interacting with any
+token or smart contract.
+
+</div>
+
 </section>
 
-<!-- BUY -->
-<section id="buy">
-  <div class="container">
 
-    <div class="cta">
-
-      <h2>Explore OmniX</h2>
-
-      <p>
-        Always verify the official contract address before interacting
-        with any token.
-      </p>
-
-      <a
-        class="button primary"
-        href="https://pancakeswap.finance/"
-        target="_blank"
-      >
-        PancakeSwap
-      </a>
-
-      <a
-        class="button secondary"
-        href="https://bscscan.com/address/0xBcEB18a1380a1E72cc4026A80F6748B68290A40E"
-        target="_blank"
-      >
-        View Contract
-      </a>
-
-    </div>
-
-  </div>
-</section>
+<!-- FOOTER -->
 
 <footer>
-  <div class="container">
 
-    <strong>OMNIX (ONX)</strong>
+<div>
+<div class="logo">
+OMNI<span>X</span>
+</div>
 
-    <br><br>
+<p>
+The power to become anything.
+</p>
 
-    © 2026 OmniX. All rights reserved.
+</div>
 
-    <br><br>
 
-    OmniX is an experimental digital-token project.
-    Cryptocurrency assets involve significant risk.
-    Nothing on this website constitutes financial advice.
+<div class="social">
 
-  </div>
+<a href="#">X</a>
+<a href="#">Telegram</a>
+<a href="#">Discord</a>
+</div>
+
 </footer>
+
+
+<script>
+
+/* COUNTDOWN */
+
+const launchDate =
+new Date("2027-07-27T00:00:00").getTime();
+
+function updateCountdown(){
+
+    const now = new Date().getTime();
+
+    const distance = launchDate - now;
+
+    if(distance <= 0){
+
+        document.getElementById("days").innerText="0";
+        document.getElementById("hours").innerText="0";
+        document.getElementById("minutes").innerText="0";
+        document.getElementById("seconds").innerText="0";
+
+        return;
+    }
+
+    const days =
+    Math.floor(distance/(1000*60*60*24));
+
+    const hours =
+    Math.floor((distance%(1000*60*60*24))/(1000*60*60));
+
+    const minutes =
+    Math.floor((distance%(1000*60*60))/(1000*60));
+
+    const seconds =
+    Math.floor((distance%(1000*60))/1000);
+
+    document.getElementById("days").innerText=days;
+
+    document.getElementById("hours").innerText=
+    String(hours).padStart(2,"0");
+
+    document.getElementById("minutes").innerText=
+    String(minutes).padStart(2,"0");
+
+    document.getElementById("seconds").innerText=
+    String(seconds).padStart(2,"0");
+}
+
+updateCountdown();
+
+setInterval(updateCountdown,1000);
+
+</script>
 
 </body>
 </html>
