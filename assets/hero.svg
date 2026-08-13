@@ -1,0 +1,208 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900">
+  <defs>
+    <radialGradient id="space" cx="50%" cy="45%">
+      <stop offset="0" stop-color="#17251c"/>
+      <stop offset="0.55" stop-color="#070b09"/>
+      <stop offset="1" stop-color="#020303"/>
+    </radialGradient>
+
+    <radialGradient id="planet">
+      <stop offset="0" stop-color="#b7ff35"/>
+      <stop offset="0.35" stop-color="#59d51c"/>
+      <stop offset="0.7" stop-color="#143b18"/>
+      <stop offset="1" stop-color="#020602"/>
+    </radialGradient>
+
+    <linearGradient id="alien" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#d8ff62"/>
+      <stop offset="0.45" stop-color="#62e51c"/>
+      <stop offset="1" stop-color="#0c4016"/>
+    </linearGradient>
+
+    <linearGradient id="energy">
+      <stop stop-color="#eaff8a"/>
+      <stop offset="0.5" stop-color="#8cff22"/>
+      <stop offset="1" stop-color="#21b83c"/>
+    </linearGradient>
+
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="12" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <filter id="softGlow">
+      <feGaussianBlur stdDeviation="35"/>
+    </filter>
+
+    <pattern id="stars" width="130" height="110" patternUnits="userSpaceOnUse">
+      <circle cx="15" cy="20" r="1.5" fill="#fff"/>
+      <circle cx="80" cy="45" r="1" fill="#9cff4a"/>
+      <circle cx="115" cy="85" r="1.5" fill="#fff"/>
+      <circle cx="45" cy="95" r="0.8" fill="#fff"/>
+    </pattern>
+  </defs>
+
+  <!-- SPACE -->
+  <rect width="1600" height="900" fill="url(#space)"/>
+  <rect width="1600" height="900" fill="url(#stars)" opacity=".65"/>
+
+  <!-- GREEN NEBULA -->
+  <ellipse cx="1050" cy="410" rx="500" ry="260"
+           fill="#4dff19" opacity=".08" filter="url(#softGlow)"/>
+
+  <ellipse cx="360" cy="680" rx="350" ry="180"
+           fill="#7dff22" opacity=".05" filter="url(#softGlow)"/>
+
+  <!-- PLANET -->
+  <circle cx="1170" cy="570" r="270" fill="url(#planet)" opacity=".95"/>
+
+  <ellipse cx="1170" cy="570" rx="370" ry="95"
+           fill="none"
+           stroke="#8dff25"
+           stroke-width="7"
+           opacity=".65"
+           transform="rotate(-18 1170 570)"
+           filter="url(#glow)"/>
+
+  <!-- ENERGY RING -->
+  <circle cx="1170" cy="570" r="310"
+          fill="none"
+          stroke="#5cff21"
+          stroke-width="2"
+          stroke-dasharray="12 18"
+          opacity=".5"/>
+
+  <!-- ALIEN GLOW -->
+  <ellipse cx="650" cy="390" rx="280" ry="300"
+           fill="#6cff24"
+           opacity=".10"
+           filter="url(#softGlow)"/>
+
+  <!-- ALIEN BODY -->
+  <path d="
+    M610 210
+    C555 230 520 285 530 350
+    C535 390 555 410 565 435
+    L535 620
+    C525 700 570 760 635 775
+    C700 790 775 745 765 675
+    L735 440
+    C750 410 770 370 765 325
+    C755 250 700 205 610 210 Z"
+    fill="url(#alien)"
+    stroke="#baff57"
+    stroke-width="5"
+    filter="url(#glow)"/>
+
+  <!-- ALIEN HEAD -->
+  <path d="
+    M565 300
+    C570 225 625 175 690 190
+    C750 204 785 260 765 325
+    C750 375 705 405 650 395
+    C595 385 555 350 565 300 Z"
+    fill="#111d13"
+    stroke="#7cff28"
+    stroke-width="8"/>
+
+  <!-- EYES -->
+  <path d="M590 292 L645 275 L635 315 L600 325 Z"
+        fill="#d8ff6b" filter="url(#glow)"/>
+
+  <path d="M700 275 L750 292 L740 325 L705 315 Z"
+        fill="#d8ff6b" filter="url(#glow)"/>
+
+  <!-- ALIEN FACE MARK -->
+  <path d="
+    M670 275
+    L685 305
+    L675 345
+    L660 345
+    L650 305 Z"
+    fill="#5cff20"/>
+
+  <!-- ARM -->
+  <path d="
+    M555 440
+    C500 475 455 535 425 610
+    L465 625
+    C520 565 560 530 595 505 Z"
+    fill="#4dcc1d"
+    stroke="#aaff4b"
+    stroke-width="5"/>
+
+  <!-- OTHER ARM -->
+  <path d="
+    M735 440
+    C800 470 850 535 880 600
+    L840 620
+    C790 565 750 530 710 505 Z"
+    fill="#4dcc1d"
+    stroke="#aaff4b"
+    stroke-width="5"/>
+
+  <!-- ENERGY CORE -->
+  <circle cx="650" cy="485" r="58"
+          fill="#071008"
+          stroke="#b8ff42"
+          stroke-width="8"
+          filter="url(#glow)"/>
+
+  <circle cx="650" cy="485" r="35"
+          fill="#9cff25"
+          opacity=".8"/>
+
+  <circle cx="650" cy="485" r="15"
+          fill="#efffb0"/>
+
+  <!-- ENERGY BEAM -->
+  <path d="M650 540 L650 820"
+        stroke="#73ff22"
+        stroke-width="9"
+        opacity=".7"
+        filter="url(#glow)"/>
+
+  <path d="M650 550 L650 820"
+        stroke="#efffb0"
+        stroke-width="2"/>
+
+  <!-- FLOATING PARTICLES -->
+  <g fill="#9cff36" filter="url(#glow)">
+    <circle cx="300" cy="230" r="4"/>
+    <circle cx="410" cy="160" r="3"/>
+    <circle cx="910" cy="190" r="5"/>
+    <circle cx="1000" cy="310" r="3"/>
+    <circle cx="850" cy="730" r="4"/>
+    <circle cx="1250" cy="190" r="3"/>
+    <circle cx="1380" cy="420" r="5"/>
+  </g>
+
+  <!-- HUD LINES -->
+  <g fill="none" stroke="#8dff35" opacity=".45">
+    <path d="M100 730 H420"/>
+    <path d="M1180 120 H1490"/>
+    <path d="M130 150 H310"/>
+    <path d="M1250 760 H1500"/>
+  </g>
+
+  <!-- TITLE -->
+  <text x="100" y="790"
+        font-family="Arial, Helvetica, sans-serif"
+        font-size="42"
+        font-weight="900"
+        letter-spacing="12"
+        fill="#ffffff">
+    OMNIX
+  </text>
+
+  <text x="100" y="835"
+        font-family="Arial, Helvetica, sans-serif"
+        font-size="20"
+        letter-spacing="6"
+        fill="#8dff35">
+    ENTER THE TRANSFORMATION UNIVERSE
+  </text>
+</svg>
