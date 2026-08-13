@@ -1,1 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>OmniX — Rewards</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#030505;
+    color:white;
+    min-height:100vh;
+}
+
+nav{
+    position:sticky;
+    top:0;
+    z-index:100;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 6%;
+    background:rgba(3,5,5,.88);
+    backdrop-filter:blur(18px);
+    border-bottom:1px solid #182018;
+}
+
+.logo{
+    font-size:28px;
+    font-weight:900;
+    letter-spacing:4px;
+}
+
+.logo span{
+    color:#a8ff00;
+}
+
+nav a{
+    color:#aaa;
+    text-decoration:none;
+    margin-left:25px;
+    font-size:13px;
+    font-weight:bold;
+}
+
+nav a:hover{
+    color:#a8ff00;
+}
+
+.hero{
+    padding:90px 7% 50px;
+    text-align:center;
+    background:
+        radial-gradient(circle at 50% 30%,rgba(168,255,0,.13),transparent 35%),
+        #030505;
+}
+
+.tag{
+    color:#a8ff00;
+    letter-spacing:5px;
+    font-size:12px;
+    font-weight:bold;
+}
+
+.hero h1{
+    font-size:clamp(45px,8vw,90px);
+    margin:18px 0;
+    line-height:.95;
+}
+
+.hero h1 span{
+    color:#a8ff00;
+    text-shadow:0 0 35px rgba(168,255,0,.5);
+}
+
+.hero p{
+    color:#888;
+    max-width:650px;
+    margin:auto;
+    line-height:1.7;
+}
+
+/* MAIN */
+
+.container{
+    width:90%;
+    max-width:1100px;
+    margin:40px auto 100px;
+}
+
+/* LOGIN */
+
+.auth{
+    max-width:650px;
+    margin:0 auto 50px;
+    padding:35px;
+    border:1px solid #263026;
+    border-radius:18px;
+    background:linear-gradient(145deg,#0b100b,#050705);
+    box-shadow:0 20px 70px rgba(0,0,0,.4);
+}
+
+.auth h2{
+    margin-bottom:10px;
+}
+
+.auth p{
+    color:#777;
+    margin-bottom:25px;
+    font-size:14px;
+}
+
+.input{
+    width:100%;
+    padding:15px;
+    margin-bottom:13px;
+    background:#080c08;
+    border:1px solid #283028;
+    border-radius:8px;
+    color:white;
+    outline:none;
+}
+
+.input:focus{
+    border-color:#a8ff00;
+}
+
+.button{
+    border:none;
+    padding:15px 25px;
+    border-radius:7px;
+    background:#a8ff00;
+    color:#050505;
+    font-weight:bold;
+    cursor:pointer;
+    width:100%;
+}
+
+.button:hover{
+    box-shadow:0 0 30px rgba(168,255,0,.4);
+}
+
+.note{
+    margin-top:15px;
+    font-size:12px;
+    color:#666;
+}
+
+/* DASHBOARD */
+
+.dashboard{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:18px;
+    margin-bottom:25px;
+}
+
+.card{
+    padding:25px;
+    border:1px solid #202820;
+    border-radius:15px;
+    background:#080b08;
+}
+
+.card small{
+    color:#777;
+    text-transform:uppercase;
+    letter-spacing:2px;
+}
+
+.card strong{
+    display:block;
+    margin-top:12px;
+    font-size:32px;
+    color:#a8ff00;
+}
+
+/* REFERRAL */
+
+.referral{
+    padding:30px;
+    border-radius:18px;
+    border:1px solid rgba(168,255,0,.25);
+    background:
+        radial-gradient(circle at 80% 20%,rgba(168,255,0,.1),transparent 30%),
+        #080b08;
+}
+
+.referral h2{
+    margin-bottom:10px;
+}
+
+.referral p{
+    color:#888;
+    line-height:1.6;
+}
+
+.refbox{
+    display:flex;
+    gap:10px;
+    margin-top:25px;
+}
+
+.refbox input{
+    flex:1;
+    padding:15px;
+    background:#030503;
+    border:1px solid #303830;
+    border-radius:7px;
+    color:#a8ff00;
+}
+
+.copy{
+    padding:15px 22px;
+    border:1px solid #a8ff00;
+    background:transparent;
+    color:#a8ff00;
+    border-radius:7px;
+    cursor:pointer;
+}
+
+.copy:hover{
+    background:#a8ff00;
+    color:#050505;
+}
+
+/* PROGRESS */
+
+.progress-section{
+    margin-top:25px;
+}
+
+.progress{
+    height:12px;
+    background:#161b16;
+    border-radius:20px;
+    overflow:hidden;
+    margin-top:15px;
+}
+
+.progress-bar{
+    width:45%;
+    height:100%;
+    background:#a8ff00;
+    box-shadow:0 0 20px #a8ff00;
+}
+
+/* RULES */
+
+.rules{
+    margin-top:60px;
+}
+
+.rules h2{
+    margin-bottom:25px;
+}
+
+.rule-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:18px;
+}
+
+.rule{
+    padding:25px;
+    background:#080b08;
+    border:1px solid #202820;
+    border-radius:12px;
+}
+
+.rule span{
+    font-size:30px;
+}
+
+.rule h3{
+    margin:15px 0 8px;
+}
+
+.rule p{
+    color:#777;
+    font-size:13px;
+    line-height:1.6;
+}
+
+.warning{
+    margin-top:30px;
+    padding:20px;
+    border:1px solid #393d22;
+    background:#111309;
+    border-radius:10px;
+    color:#999;
+    font-size:13px;
+    line-height:1.6;
+}
+
+/* FOOTER */
+
+footer{
+    text-align:center;
+    padding:40px;
+    border-top:1px solid #171b17;
+    color:#666;
+    font-size:12px;
+}
+
+footer span{
+    color:#a8ff00;
+}
+
+@media(max-width:650px){
+
+    nav div:last-child{
+        display:none;
+    }
+
+    .refbox{
+        flex-direction:column;
+    }
+
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+
+<div class="logo">
+OMNI<span>X</span>
+</div>
+
+<div>
+<a href="index.html">HOME</a>
+<a href="game.html">GAME</a>
+<a href="rewards.html">REWARDS</a>
+</div>
+
+</nav>
+
+
+<section class="hero">
+
+<div class="tag">OMNIX COMMUNITY REWARDS</div>
+
+<h1>
+INVITE.<br>
+<span>EARN.</span>
+</h1>
+
+<p>
+Create your OmniX ID, invite new members and track
+your verified referrals. Your reward eligibility will
+be determined according to the official OmniX reward
+rules.
+</p>
+
+</section>
+
+
+<div class="container">
+
+
+<!-- REGISTER -->
+
+<div class="auth">
+
+<h2>Create your OmniX ID</h2>
+
+<p>
+Register to receive your personal OmniX community ID
+and referral link.
+</p>
+
+<input
+class="input"
+id="name"
+placeholder="Your name"
+>
+
+<input
+class="input"
+id="email"
+type="email"
+placeholder="Email address"
+>
+
+<input
+class="input"
+id="password"
+type="password"
+placeholder="Create password"
+>
+
+<button class="button" onclick="registerUser()">
+CREATE OMNIX ID
+</button>
+
+<div class="note">
+Your account system is currently in preview mode.
+Real account verification will be connected later.
+</div>
+
+</div>
+
+
+<!-- DASHBOARD -->
+
+<div class="dashboard">
+
+<div class="card">
+<small>OmniX ID</small>
+<strong id="userId">—</strong>
+</div>
+
+<div class="card">
+<small>Verified Referrals</small>
+<strong id="referrals">0</strong>
+</div>
+
+<div class="card">
+<small>Reward Status</small>
+<strong style="font-size:22px">
+PENDING
+</strong>
+</div>
+
+<div class="card">
+<small>Pool Share</small>
+<strong>0%</strong>
+</div>
+
+</div>
+
+
+<!-- REFERRAL -->
+
+<div class="referral">
+
+<h2>Your Referral Link</h2>
+
+<p>
+Share your unique link with friends. Only registrations
+that satisfy the final OmniX eligibility rules should
+be counted as verified referrals.
+</p>
+
+<div class="refbox">
+
+<input
+id="referralLink"
+readonly
+value="Register first to generate your link"
+>
+
+<button class="copy" onclick="copyLink()">
+COPY
+</button>
+
+</div>
+
+
+<div class="progress-section">
+
+<p>
+Referral progress
+</p>
+
+<div class="progress">
+<div class="progress-bar"></div>
+</div>
+
+</div>
+
+</div>
+
+
+<!-- RULES -->
+
+<div class="rules">
+
+<h2>How it works</h2>
+
+<div class="rule-grid">
+
+<div class="rule">
+
+<span>01</span>
+
+<h3>Create your ID</h3>
+
+<p>
+Register for an OmniX community account and receive
+your unique user ID.
+</p>
+
+</div>
+
+
+<div class="rule">
+
+<span>02</span>
+
+<h3>Invite friends</h3>
+
+<p>
+Share your personal referral link with people who want
+to join the OmniX community.
+</p>
+
+</div>
+
+
+<div class="rule">
+
+<span>03</span>
+
+<h3>Verified registration</h3>
+
+<p>
+Eligible completed registrations can be recorded as
+verified referrals once the real backend is connected.
+</p>
+
+</div>
+
+
+<div class="rule">
+
+<span>04</span>
+
+<h3>Reward calculation</h3>
+
+<p>
+Eligible participants may receive a share of the
+designated reward pool according to the final rules.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="warning">
+
+<strong>Important:</strong>
+The reward pool, token allocation, eligibility rules
+and distribution schedule are subject to the official
+OmniX project rules and may change before launch.
+This website currently provides a preview of the
+planned reward interface and does not guarantee a
+financial return.
+
+</div>
+
+</div>
+
+</div>
+
+
+<footer>
+
+© 2026 <span>OmniX</span><br><br>
+Community rewards interface — preview version.
+
+</footer>
+
+
+<script>
+
+function registerUser(){
+
+    const name =
+        document.getElementById("name").value.trim();
+
+    const email =
+        document.getElementById("email").value.trim();
+
+    const password =
+        document.getElementById("password").value;
+
+    if(!name || !email || !password){
+
+        alert("Please complete all fields.");
+
+        return;
+    }
+
+    /*
+      DEMO ID ONLY.
+
+      This is not a real secure account system.
+      A backend/database will replace this later.
+    */
+
+    const random =
+        Math.floor(100000 + Math.random() * 900000);
+
+    const id =
+        "ONX-" + random;
+
+    document.getElementById("userId").textContent = id;
+
+    const link =
+        window.location.origin +
+        window.location.pathname +
+        "?ref=" +
+        id;
+
+    document.getElementById("referralLink").value = link;
+
+    alert(
+        "OmniX ID created: " +
+        id +
+        "\n\nThis is currently a preview account."
+    );
+}
+
+
+function copyLink(){
+
+    const input =
+        document.getElementById("referralLink");
+
+    if(
+        input.value ===
+        "Register first to generate your link"
+    ){
+
+        alert("Create your OmniX ID first.");
+
+        return;
+    }
+
+    navigator.clipboard.writeText(input.value);
+
+    alert("Referral link copied.");
+}
+
+</script>
+
+</body>
+</html>
